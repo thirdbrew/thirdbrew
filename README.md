@@ -5,9 +5,10 @@
 
 ### Hey, I'm Charlie
 
-I'm an Industrial &amp; Systems Engineering student at Georgia Tech, and most of what I
-build lives where operations research meets money — optimization, simulation, and
-statistics pointed at decisions that actually cost something if you get them wrong.
+I'm an Industrial &amp; Systems Engineering student at Georgia Tech. A lot of what I build
+sits where operations research meets money — optimization, simulation, and statistics
+pointed at decisions that actually cost something if you get them wrong. The rest is
+games, tooling, and whatever else I want to understand well enough to measure.
 
 The habit that shows up in all of it: I decide what "working" means *before* I run the
 test, then report the result against that bar. Sometimes the answer is that my idea
@@ -45,6 +46,7 @@ are safe to share out into the open.
 ![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white)
 ![mypy](https://img.shields.io/badge/mypy-2A6DB2?style=flat-square)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Godot](https://img.shields.io/badge/Godot-478CBF?style=flat-square&logo=godotengine&logoColor=white)
 
 ---
 
@@ -70,6 +72,38 @@ through the code.
 
 Four improvements I was convinced would work got rejected after failing pre-registered
 out-of-sample tests. I kept the write-ups.
+
+---
+
+### Same habit, other places
+
+I keep noticing the same pattern in my own work: I end up building the thing that tells
+me whether the thing works. It shows up well outside finance.
+
+**Hearthwake** &nbsp;·&nbsp; *local* &nbsp;·&nbsp; `Godot 4.7` `GDScript`
+
+A fishing game that started as a bake-off. Three candidate mechanics live in one gray-box
+scene at the same time — press 1, 2, or 3 to swap between them mid-session, hold-and-release
+against pulse against tap. The point is to feel all three back to back instead of arguing
+about them.
+
+I don't tune game feel in a test harness. Feel isn't a number, so the build gets played and
+judged by hand — agents can build it, but they can't tell me whether casting feels good.
+
+**Vault tooling** &nbsp;·&nbsp; *local* &nbsp;·&nbsp; `Python`
+
+A personal knowledge system with a query layer instead of a folder tree — ask it a question
+in plain language and it points at the one section that answers it. What I like most is the
+part that grades it: an eval harness that runs natural-language questions against a holdout
+set and scores retrieval on recall@k and MRR. When search gets worse, the numbers tell me,
+instead of me quietly failing to find things.
+
+**Workflow tooling** &nbsp;·&nbsp; `Python` `Markdown`
+
+A dozen or so custom Claude Code skills and hooks for the things I do repeatedly: staging a
+trade with a checklist that refuses to write the order until every question is answered,
+reconciling fills across every file that a single fill touches, closing out a work session
+into the vault. Mostly guardrails I built after getting something wrong once.
 
 ---
 
