@@ -23,7 +23,7 @@
   <rect x="0" y="0" width="4" height="300" fill="#B3A369"/>
 
   <!-- identity -->
-  <text class="mono eyebrow" x="64" y="86">GEORGIA TECH  ·  ISYE  ·  CLASS OF 2028</text>
+  <text class="mono eyebrow" x="64" y="86">GEORGIA TECH  ·  ISYE</text>
   <text class="mono name"    x="64" y="162">CHARLIE</text>
   <line x1="64" y1="186" x2="404" y2="186" stroke="#B3A369" stroke-width="2"/>
   <text class="mono tag" x="64" y="216">I build systems that are structurally capable</text>

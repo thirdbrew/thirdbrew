@@ -19,8 +19,6 @@ logistics and warehouse throughput. Outside of that I run a systematic trading s
 I've been building and breaking for a while, and I'm slowly getting the parts of it that
 are safe to share out into the open.
 
-**Looking for:** summer 2027 internships in quant research, quant dev, or data science.
-
 ---
 
 ### What I work with
