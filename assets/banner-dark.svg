@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 300" width="1100" height="300" role="img" aria-label="Charlie — Industrial and Systems Engineering, Georgia Tech. Method: model, test, report, revise.">
+  <defs>
+    <style>
+      .mono { font-family: ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+      .eyebrow { font-size: 13px; letter-spacing: 3.6px; fill: #B3A369; }
+      .name    { font-size: 66px; letter-spacing: 9px; fill: #F5F3EE; font-weight: 700; }
+      .tag     { font-size: 15px; letter-spacing: 0.2px; fill: #8A9AAB; }
+      .node    { font-size: 12px; letter-spacing: 1.6px; fill: #C8D2DC; }
+      .loop    { font-size: 11px; letter-spacing: 2.4px; fill: #B3A369; }
+      .box     { fill: none; stroke: #2A3F55; stroke-width: 1.25; }
+      .wire    { fill: none; stroke: #2A3F55; stroke-width: 1.25; }
+      .wire-a  { fill: none; stroke: #B3A369; stroke-width: 1.25; stroke-dasharray: 3 3; }
+    </style>
+    <marker id="a-d" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#2A3F55"/>
+    </marker>
+    <marker id="a-g" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0 0 L8 4 L0 8 z" fill="#B3A369"/>
+    </marker>
+  </defs>
+
+  <rect width="1100" height="300" fill="#0A1628"/>
+  <rect x="0" y="0" width="4" height="300" fill="#B3A369"/>
+
+  <!-- identity -->
+  <text class="mono eyebrow" x="64" y="86">GEORGIA TECH  ·  ISYE  ·  CLASS OF 2028</text>
+  <text class="mono name"    x="64" y="162">CHARLIE</text>
+  <line x1="64" y1="186" x2="404" y2="186" stroke="#B3A369" stroke-width="2"/>
+  <text class="mono tag" x="64" y="216">I build systems that are structurally capable</text>
+  <text class="mono tag" x="64" y="238">of telling me I&#8217;m wrong.</text>
+
+  <!-- method loop -->
+  <g>
+    <rect class="box" x="652" y="108" width="96" height="34" rx="2"/>
+    <text class="mono node" x="700" y="130" text-anchor="middle">MODEL</text>
+
+    <rect class="box" x="784" y="108" width="96" height="34" rx="2"/>
+    <text class="mono node" x="832" y="130" text-anchor="middle">TEST</text>
+
+    <rect class="box" x="916" y="108" width="96" height="34" rx="2"/>
+    <text class="mono node" x="964" y="130" text-anchor="middle">REPORT</text>
+
+    <line class="wire" x1="750" y1="125" x2="778" y2="125" marker-end="url(#a-d)"/>
+    <line class="wire" x1="882" y1="125" x2="910" y2="125" marker-end="url(#a-d)"/>
+
+    <!-- the feedback edge: the whole point -->
+    <path class="wire-a" d="M964 142 L964 186 L700 186 L700 148" marker-end="url(#a-g)"/>
+    <text class="mono loop" x="832" y="205" text-anchor="middle">REVISE</text>
+  </g>
+</svg>
