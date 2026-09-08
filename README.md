@@ -56,16 +56,18 @@ are below, on synthetic data where the real feed can't travel.
 
 Which pallet should occupy which pick face, right now, and what moves next. A rules engine
 that emits advisory ADD/REMOVE/WAIT calls against a live floor state, plus a simulator that
-replays a full pick day against them. 85 modules, 294 tests, runs end to end on a seeded
+replays a full pick day against them. 85 modules, 295 tests, runs end to end on a seeded
 synthetic site — the customer feed it was developed against is not in the repository in any
-form, at any point in its history.
+form, at any point in its history. On seed 7 it takes the floor from a **77% dead-slot rate
+to 10%**, and the waved layer-pick rate from **27.9% to 51.9%**.
 
 Every rule is a pure function over one snapshot, which is what makes attribution possible:
-drop one rule, re-run, read what it was worth. Doing that turned up the thing I'd have
-missed otherwise. The floor's dead-slot rate improves 42pp, and **almost all of that comes
-from eviction, which moves the layer-pick rate by nothing at all.** The two are separate
-rules doing separate jobs. Reporting the number that looked good would have shipped an
-engine that could not pick any faster than the floor it replaced.
+drop one rule, re-run, read what it was worth. Doing that is what caught the real problem.
+The first version I published moved dead slots 40pp and the layer-pick rate by **exactly
+zero**, every hour of the simulated day — the rule that fills a freed face was disabled by
+default and gated a second time, so the engine could evict and nothing else, and the number
+I'd led with was the one that couldn't tell. Freeing a face and picking a layer off it are
+different rules doing different jobs, and only one of them is what the operation is paid on.
 
 **[Realistic Backtesting Engine](https://github.com/thirdbrew/Back-Testing-Engine)** &nbsp;·&nbsp; `Python` `pandas` `NumPy`
 
