@@ -17,8 +17,8 @@ from.
 
 Right now I'm a **Global Innovation Intern at Americold**, working on cold-chain
 logistics and warehouse throughput. Outside of that I run a systematic trading system
-I've been building and breaking for a while, and I'm slowly getting the parts of it that
-are safe to share out into the open.
+I've been building and breaking for a while. The parts of both that are safe to publish
+are below, on synthetic data where the real feed can't travel.
 
 ---
 
@@ -52,6 +52,21 @@ are safe to share out into the open.
 
 ### Selected work
 
+**[Warehouse Layer-Pick Slotting Engine](https://github.com/thirdbrew/layer-pick-slotting-engine)** &nbsp;·&nbsp; `Python` `discrete-event sim`
+
+Which pallet should occupy which pick face, right now, and what moves next. A rules engine
+that emits advisory ADD/REMOVE/WAIT calls against a live floor state, plus a simulator that
+replays a full pick day against them. 85 modules, 294 tests, runs end to end on a seeded
+synthetic site — the customer feed it was developed against is not in the repository in any
+form, at any point in its history.
+
+Every rule is a pure function over one snapshot, which is what makes attribution possible:
+drop one rule, re-run, read what it was worth. Doing that turned up the thing I'd have
+missed otherwise. The floor's dead-slot rate improves 42pp, and **almost all of that comes
+from eviction, which moves the layer-pick rate by nothing at all.** The two are separate
+rules doing separate jobs. Reporting the number that looked good would have shipped an
+engine that could not pick any faster than the floor it replaced.
+
 **[Realistic Backtesting Engine](https://github.com/thirdbrew/Back-Testing-Engine)** &nbsp;·&nbsp; `Python` `pandas` `NumPy`
 
 A bar-by-bar equity backtester built so lookahead bias is impossible by construction
@@ -63,15 +78,18 @@ I used it on a naive EMA(5/8) crossover. It returned **+6.7% over five years aga
 +134% for buy-and-hold**, with a worse drawdown and a mean daily return you can't
 distinguish from zero. That's the result, and documenting it cleanly was the point.
 
-**Systematic Portfolio Engine** &nbsp;·&nbsp; *private* &nbsp;·&nbsp; `Python` `pandas` `SciPy`
+**[Systematic Trading Research](https://github.com/thirdbrew/systematic-trading-research)** &nbsp;·&nbsp; `Python` `pandas` `SciPy`
 
-Monthly-rebalanced allocation system with cost-aware sizing, per-position stops, and a
-decision journal I write *before* each trade so the reasoning is still gradeable after I
-know the outcome. Limits, floors, and stops live in one config file instead of scattered
-through the code.
+A 70/30 equity + managed-futures allocation, a swing sleeve, and the statistical machinery
+that decides whether either is worth funding. The pre-registration harness refuses to grade
+a hypothesis until its pass/fail bar is committed and pushed, because a bar still sitting in
+your working tree can be amended once you've seen the result. Trials are counted and the
+significance test is deflated for them.
 
-Four improvements I was convinced would work got rejected after failing pre-registered
-out-of-sample tests. I kept the write-ups.
+**Eight hypotheses registered, five graded, all five FAIL** — published with their
+registrations and verdicts intact. The one I'd point at first misses its own bar by 0.0057
+Sharpe and then argues, against my interest, that the criterion it nearly passed is the
+least robust of the three.
 
 ---
 
