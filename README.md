@@ -1,8 +1,3 @@
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
-  <img alt="Charlie — Industrial and Systems Engineering, Georgia Tech" src="assets/banner-light.svg" width="100%">
-</picture>
-
 ### Hey, I'm Charlie
 
 I'm an Industrial &amp; Systems Engineering student at Georgia Tech. A lot of what I build
