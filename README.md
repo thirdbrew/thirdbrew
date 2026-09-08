@@ -45,7 +45,7 @@ on synthetic data where the real feed can't travel.
 
 ### Selected work
 
-**[Warehouse Layer-Pick Slotting Engine](https://github.com/thirdbrew/layer-pick-slotting-engine)** &nbsp;·&nbsp; `Python` `discrete-event sim`
+**[Warehouse Layer-Pick Slotting Engine](https://github.com/thirdbrew/layer-pick-slotting)** &nbsp;·&nbsp; `Python` `discrete-event sim`
 
 Which pallet should occupy which pick face, right now, and what moves next. A rules engine
 that emits advisory ADD/REMOVE/WAIT calls against a live floor state, plus a simulator that
