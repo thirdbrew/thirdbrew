@@ -52,7 +52,8 @@ that emits advisory ADD/REMOVE/WAIT calls against a live floor state, plus a sim
 replays a full pick day against them. 85 modules, 295 tests, runs end to end on a seeded
 synthetic site. The customer feed it was developed against is not in the repository in any
 form, at any point in its history. On seed 7 it takes the floor from a **77% dead-slot rate
-to 10%**, and the waved layer-pick rate from 27.9% to 51.9%.
+to 10%**, and the waved layer-pick rate from 26.3% to 48.3%, weighted by the layers actually
+waved rather than averaged across hours.
 
 Every rule is a pure function over one snapshot, which is what makes attribution possible:
 drop one rule, re-run, read what it was worth. That is how I caught the real problem. The
