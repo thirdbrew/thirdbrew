@@ -9,10 +9,10 @@ test, then report the result against that bar. Sometimes the answer is that my i
 doesn't work. Those results are in my repos too, and they're the ones I learned the most
 from.
 
-Right now I'm a Global Innovation Intern at Americold, working on cold-chain logistics
-and warehouse throughput. Outside of that I run a systematic trading system I've been
-building and breaking for a while. The parts of both that are safe to publish are below,
-on synthetic data where the real feed can't travel.
+This summer I was a Global Innovation Intern at Americold, building simulation and
+slotting tools for cold-chain warehouse throughput. Outside of that I run a systematic
+trading system I've been building and breaking for a while. The research I can publish
+is below.
 
 ---
 
@@ -35,45 +35,33 @@ on synthetic data where the real feed can't travel.
 
 **Engineering**
 &nbsp;
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
 ![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white)
 ![mypy](https://img.shields.io/badge/mypy-2A6DB2?style=flat-square)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
 ---
 
 ### Selected work
 
-**[Warehouse Layer-Pick Slotting Engine](https://github.com/thirdbrew/layer-pick-slotting)** &nbsp;·&nbsp; `Python` `discrete-event sim`
+**[Cointegration Pairs Study](https://github.com/thirdbrew/coint-pairs-study)** &nbsp;·&nbsp; `Python` `pandas` `NumPy`
 
-Which pallet should occupy which pick face, right now, and what moves next. A rules engine
-that emits advisory ADD/REMOVE/WAIT calls against a live floor state, plus a simulator that
-replays a full pick day against them. 85 modules, 295 tests, runs end to end on a seeded
-synthetic site. The customer feed it was developed against is not in the repository in any
-form, at any point in its history. On seed 7 it takes the floor from a **77% dead-slot rate
-to 10%**, and the waved layer-pick rate from 26.3% to 48.3%, weighted by the layers actually
-waved rather than averaged across hours.
+Does pairs trading survive honest statistics? On a point-in-time S&P 500 universe (829
+tickers, 2011–2026), a naive cointegration screen calls **173,594** pairs significant where
+chance alone predicts **122,920**. After Benjamini–Hochberg FDR control 1,446 survive, and
+traded out of sample they return Sharpe **−0.25** against a pre-registered bar of 0.50,
+and still −0.19 at zero cost.
 
-Every rule is a pure function over one snapshot, which is what makes attribution possible:
-drop one rule, re-run, read what it was worth. That is how I caught the real problem. The
-first version I published moved dead slots 40pp and the layer-pick rate by exactly zero,
-every hour of the simulated day. The rule that fills a freed face was disabled by default
-and gated a second time, so the engine could evict and nothing else. The number I had led
-with was the one that couldn't tell.
+All three hypotheses were frozen and pushed to a remote before any code ran. An adversarial
+review then reversed one of the published conclusions: the trading path normalised its
+z-score with a statistic computed from the future. The reversal is documented, not patched.
 
-**[Systematic Trading Research](https://github.com/thirdbrew/systematic-trading-research)** &nbsp;·&nbsp; `Python` `pandas` `SciPy`
+**[Limit Order Book & Market Making](https://github.com/thirdbrew/lob-market-maker)** &nbsp;·&nbsp; `Python` `pytest`
 
-A 70/30 equity + managed-futures allocation, a swing sleeve, and the statistical machinery
-that decides whether either is worth funding. The pre-registration harness refuses to grade
-a hypothesis until its pass/fail bar is committed and pushed, because a bar still sitting in
-your working tree can be amended once you've seen the result. Trials are counted and the
-significance test is deflated for them.
-
-**Eight hypotheses registered, five graded, all five failed.** They're published with their
-registrations and verdicts intact. The one I'd point at first misses its own bar by 0.0057
-Sharpe and then argues, against my interest, that the criterion it nearly passed is the
-least robust of the three.
+A price-time-priority matching engine, a synthetic market with informed traders in it, and
+two market makers compared on a risk/return frontier. **The naive fixed spread dominates
+the Avellaneda–Stoikov closed form at 7 of 7 risk levels**, and the P&L decomposition says
+why: adverse selection. A-S prices inventory risk, and its derivation contains no informed
+traders. 56 tests.
 
 **[Realistic Backtesting Engine](https://github.com/thirdbrew/Back-Testing-Engine)** &nbsp;·&nbsp; `Python` `pandas` `NumPy`
 
