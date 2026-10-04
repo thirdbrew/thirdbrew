@@ -12,7 +12,7 @@ from.
 This summer I was a Global Innovation Intern at Americold, building simulation and
 slotting tools for cold-chain warehouse throughput. Outside of that I run a systematic
 trading system I've been building and breaking for a while. The research I can publish
-is below.
+is below, with the warehouse work on synthetic data.
 
 ---
 
@@ -42,6 +42,37 @@ is below.
 ---
 
 ### Selected work
+
+**[Warehouse Layer-Pick Slotting Engine](https://github.com/thirdbrew/layer-pick-slotting)** &nbsp;·&nbsp; `Python` `discrete-event sim`
+
+Which pallet should occupy which pick face, right now, and what moves next. A rules engine
+that emits advisory ADD/REMOVE/WAIT calls against a live floor state, plus a simulator that
+replays a full pick day against them. 84 modules, 295 tests, runs end to end on a seeded
+synthetic site. The customer feed it was developed against is not in the repository in any
+form, at any point in its history. On seed 7 its default policy takes the floor from a **77% dead-slot
+rate to 12%**, and the waved layer-pick rate from 26.3% to 40.0%, weighted by the layers
+actually waved rather than averaged across hours. The opt-in resupply-rack policy reaches
+10% and 48.3%.
+
+Every rule is a pure function over one snapshot, which is what makes attribution possible:
+drop one rule, re-run, read what it was worth. That is how I caught the real problem. The
+first version I published moved dead slots 40pp and the layer-pick rate by exactly zero,
+every hour of the simulated day. The rule that fills a freed face was disabled by default
+and gated a second time, so the engine could evict and nothing else. The number I had led
+with was the one that couldn't tell.
+
+**[Systematic Trading Research](https://github.com/thirdbrew/systematic-trading-research)** &nbsp;·&nbsp; `Python` `pandas` `SciPy`
+
+A 70/30 equity + managed-futures allocation, a swing sleeve, and the statistical machinery
+that decides whether either is worth funding. The pre-registration harness refuses to grade
+a hypothesis until its pass/fail bar is committed and pushed, because a bar still sitting in
+your working tree can be amended once you've seen the result. Trials are counted and the
+significance test is deflated for them.
+
+**Eight hypotheses registered, five graded, all five failed.** They're published with their
+registrations and verdicts intact. The one I'd point at first misses its own bar by 0.0057
+Sharpe and then argues, against my interest, that the criterion it nearly passed is the
+least robust of the three.
 
 **[Cointegration Pairs Study](https://github.com/thirdbrew/coint-pairs-study)** &nbsp;·&nbsp; `Python` `pandas` `NumPy`
 
