@@ -82,7 +82,7 @@ chance alone predicts **122,920**. After Benjamini–Hochberg FDR control 1,446 
 traded out of sample they return Sharpe **−0.25** against a pre-registered bar of 0.50,
 and still −0.19 at zero cost.
 
-All three hypotheses were frozen and pushed to a remote before any code ran. An adversarial
+Each of the three hypotheses was frozen and pushed to a remote before the run that grades it. An adversarial
 review then reversed one of the published conclusions: the trading path normalised its
 z-score with a statistic computed from the future. The reversal is documented, not patched.
 
